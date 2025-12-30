@@ -1,0 +1,72 @@
+index.html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>e-Devlet Kapısı | Ana Sayfa</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', Arial, sans-serif; background: #fff; }
+        .hero {
+            background: url('https://giris.turkiye.gov.tr/assets/img/backgrounds/sky.jpg') no-repeat center bottom;
+            background-size: cover; height: 480px; color: white; padding: 20px 10%; text-align: center;
+        }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 80px; }
+        .logo { font-size: 32px; font-weight: 800; cursor: pointer; }
+        .btn-white { background: white; color: #005596; border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+        .search-title { font-size: 36px; margin-bottom: 25px; font-weight: 300; }
+        .search-bar { background: white; border-radius: 8px; display: flex; max-width: 750px; margin: 0 auto; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .search-bar input { flex: 1; border: none; padding: 20px; font-size: 18px; outline: none; }
+        .search-bar button { background: #f8f9fa; border: none; padding: 0 25px; cursor: pointer; font-size: 22px; }
+        .services-nav {
+            display: flex; justify-content: center; gap: 45px; margin: -60px auto 0; padding: 40px;
+            background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; z-index: 10; border-radius: 4px; width: 85%;
+        }
+        .service-item { text-align: center; cursor: pointer; transition: 0.3s; width: 120px; }
+        .icon-box { 
+            width: 70px; height: 70px; border-radius: 50%; background: #005596; 
+            margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 30px; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .content-section { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; padding: 60px 10%; background: #f4f7f9; }
+        .ata-box { background: #1a1a1a; color: white; padding: 35px; border-radius: 6px; }
+        .ata-box img { width: 100%; border-radius: 4px; margin-bottom: 20px; background: white; padding: 5px; }
+        footer { padding: 40px 10%; background: white; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .call-160 { font-size: 42px; font-weight: 900; color: #c02626; text-decoration: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <header>
+            <div class="logo">türkiye.gov.tr</div>
+            <div class="nav-right"><button class="btn-white">Giriş Yap</button></div>
+        </header>
+        <div class="search-title">Size nasıl yardımcı olabilirim?</div>
+        <div class="search-bar"><input type="text" placeholder="Hizmet yazın..."><button>🔍</button></div>
+    </div>
+    <div class="services-nav">
+        <div class="service-item"><div class="icon-box">🔄</div><p>e-Hizmetler</p></div>
+        <div class="service-item"><div class="icon-box">🏢</div><p>Kurumlar</p></div>
+        <div class="service-item"><div class="icon-box">🏙️</div><p>Belediyeler</p></div>
+        <div class="service-item"><div class="icon-box">🏭</div><p>Firmalar</p></div>
+    </div>
+    <div class="content-section">
+        <div class="ata-box">
+            <img src="https://www.turkiye.gov.tr/themes/ankara/assets/img/logos/atatürk.png">
+            <h3>Gazi Mustafa Kemal ATATÜRK</h3>
+            <p style="font-style: italic; opacity: 0.8;">"Egemenlik Kayıtsız Şartsız Milletindir."</p>
+        </div>
+        <div style="background:white; padding:40px; border-radius:6px; border:1px solid #ddd;">
+            <h2 style="color:#005596;">Özel Hizmet Alanınız</h2>
+            <p style="margin-top:15px; line-height:1.6;">Tüm taşınmaz kayıtlarınız, tapu bilgileriniz ve belgeleriniz burada listelenir.</p>
+        </div>
+    </div>
+    <footer>
+        <img src="https://www.turkiye.gov.tr/themes/ankara/assets/img/logos/edevlet-logo.png" height="60">
+        <div style="text-align:right;">
+            <span style="font-weight:bold; color:#666;">e-Devlet Kapısı Çağrı Merkezi</span><br>
+            <a href="tel:160" class="call-160">160</a>
+        </div>
+    </footer>
+</body>
+</html>
