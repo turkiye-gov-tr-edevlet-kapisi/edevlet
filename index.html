@@ -6,216 +6,96 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
         body { background: #f2f2f2; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .login-card { background: white; width: 100%; max-width: 600px; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); position: relative; }
+        .login-card { background: white; width: 100%; max-width: 500px; padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 5px solid #ed1c24; }
         
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .logo-left { display: flex; align-items: center; gap: 10px; }
-        .logo-left img { width: 50px; }
-        .logo-right img { width: 120px; }
+        /* LOGO VE BAYRAK ALANI */
+        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logo-box { display: flex; align-items: center; gap: 10px; }
+        .logo-box img { height: 45px; }
+        .flag-box img { height: 35px; border-radius: 3px; }
 
-        .tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 30px; justify-content: space-around; font-size: 13px; color: #666; }
-        .tab.active { color: #000; border-bottom: 2px solid #ed1c24; padding-bottom: 10px; font-weight: bold; }
+        .official-link { text-align: center; margin-bottom: 20px; color: #005596; font-size: 14px; font-weight: bold; text-decoration: none; display: block; }
+        .official-link:hover { text-decoration: underline; }
 
-        .form-group { margin-bottom: 20px; position: relative; }
-        .form-group label { display: block; font-size: 13px; color: #333; margin-bottom: 8px; font-weight: bold; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; background: #f9f9f9; font-size: 16px; outline: none; }
+        .tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 25px; justify-content: space-around; font-size: 12px; color: #666; }
+        .tab.active { color: #000; border-bottom: 3px solid #ed1c24; padding-bottom: 8px; font-weight: bold; }
+
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 12px; color: #333; margin-bottom: 5px; font-weight: bold; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; background: #fdfdfd; font-size: 16px; outline: none; }
         
-        /* Güvenlik Kodu Alanı */
-        .captcha-container { display: flex; align-items: center; gap: 15px; margin-top: 20px; }
-        .captcha-box { background: linear-gradient(45deg, #eee, #ccc); padding: 10px 20px; font-family: 'Courier New', monospace; font-size: 24px; font-weight: bold; letter-spacing: 5px; color: #333; border-radius: 4px; border: 1px solid #bbb; user-select: none; font-style: italic; }
-        .captcha-input { width: 120px !important; }
+        .captcha-container { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
+        .captcha-box { background: #e8e8e8; padding: 10px; font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; letter-spacing: 4px; color: #444; border: 1px dashed #999; width: 120px; text-align: center; user-select: none; }
 
-        .btn-submit { width: 100%; background: #005596; color: white; border: none; padding: 15px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
-        .btn-submit:hover { background: #003d6b; }
-
-        footer { text-align: center; margin-top: 30px; font-size: 11px; color: #888; line-height: 1.6; }
-        .footer-links { margin-bottom: 10px; color: #005596; font-weight: bold; cursor: pointer; }
+        .btn-submit { width: 100%; background: #005596; color: white; border: none; padding: 15px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        
+        footer { text-align: center; margin-top: 25px; font-size: 10px; color: #999; border-top: 1px solid #eee; padding-top: 15px; }
     </style>
 </head>
 <body>
 
 <div class="login-card">
-    <div class="header">
-        <div class="logo-left">
-            <img src="https://st3.depositphotos.com/1000423/14144/v/450/depositphotos_141440750-stock-illustration-republic-of-turkey-crest.jpg" alt="Logo">
-            <div><strong>e-Devlet Kapısı</strong><br><small>KİMLİK DOĞRULAMA SİSTEMİ</small></div>
+    <div class="header-top">
+        <div class="logo-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Turkiye.gov.tr_logo.svg" alt="e-Devlet Logo">
         </div>
-        <div class="logo-right">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Turkiye.gov.tr_logo.svg" alt="turkiye-gov-tr">
+        <div class="flag-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Türk Bayrağı">
         </div>
     </div>
+
+    <a href="https://www.turkiye.gov.tr" class="official-link">www.turkiye.gov.tr</a>
 
     <div class="tabs">
         <div class="tab active">e-Devlet Şifresi</div>
-        <div class="tab">Elektronik İmza</div>
-        <div class="tab">İnternet Bankacılığı</div>
-    </div>
-
-    <p style="font-size: 12px; color: #555; margin-bottom: 20px;">T.C. Kimlik Numaranızı ve e-Devlet Şifrenizi kullanarak kimliğiniz doğrulandıktan sonra işleminize kaldığınız yerden devam edebilirsiniz.</p>
-
-    <div class="form-group">
-        <label>* T.C. Kimlik No</label>
-        <input type="text" maxlength="11" placeholder="">
+        <div class="tab">Mobil İmza</div>
+        <div class="tab">T.C. Kimlik Kartı</div>
     </div>
 
     <div class="form-group">
-        <label>* e-Devlet Şifresi</label>
-        <input type="password" placeholder="">
+        <label>T.C. Kimlik No</label>
+        <input type="text" maxlength="11" placeholder="TC Kimlik Numaranız">
     </div>
 
     <div class="form-group">
-        <label>* Güvenlik Kodu</label>
+        <label>e-Devlet Şifresi</label>
+        <input type="password" placeholder="Şifreniz">
+    </div>
+
+    <div class="form-group">
+        <label>Güvenlik Kodu</label>
         <div class="captcha-container">
-            <div id="captchaCode" class="captcha-box"></div>
-            <input type="text" class="captcha-input" id="userInput" placeholder="Kodu yazın">
+            <div id="capCode" class="captcha-box"></div>
+            <input type="text" id="capInput" style="flex:1" placeholder="Kodu girin">
         </div>
     </div>
 
-    <button class="btn-submit" onclick="validate()">Giriş Yap</button>
+    <button class="btn-submit" onclick="loginCheck()">Giriş Yap</button>
 
     <footer>
-        <div class="footer-links">Hızlı Çözüm Merkezi | Gizlilik ve Güvenlik</div>
-        <p>© 2025, Ankara - TÜRSAT Siber Güvenlik Başkanlığı<br>Tüm Hakları Saklıdır.</p>
+        <p>Hızlı Çözüm Merkezi | Gizlilik ve Güvenlik</p>
+        <p>© 2025 Ankara - TÜRSAT Siber Güvenlik Başkanlığı<br>Tüm Hakları Saklıdır.</p>
     </footer>
 </div>
 
 <script>
-    // Güvenlik kodu üretme fonksiyonu
-    function generateCaptcha() {
-        const chars = "abcdefghjkmnpqrstuvwxyz23456789";
-        let result = "";
-        for (let i = 0; i < 5; i++) {
-            result += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        document.getElementById("captchaCode").innerText = result;
-    }
-
-    // Giriş yapınca ne olacak?
-    function validate() {
-        const captcha = document.getElementById("captchaCode").innerText;
-        const input = document.getElementById("userInput").value;
-        
-        if (input.toLowerCase() === captcha.toLowerCase()) {
-            alert("Kimlik Doğrulandı! Elif Serbest adına Sultan Murat Mah. Tapu Kayıtlarına aktarılıyorsunuz...");
-            // Buraya girişten sonraki (tapu listesinin olduğu) sayfa linkini koyabiliriz.
-        } else {
-            alert("Güvenlik kodu hatalı! Lütfen tekrar deneyin.");
-            generateCaptcha();
-        }
-    }
-
-    // Sayfa açıldığında kodu oluştur
-    window.onload = generateCaptcha;
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>e-Devlet Kapısı | Portala Giriş</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background: #f2f2f2; min-height: 100vh; }
-        
-        /* GİRİŞ EKRANI STİLLERİ */
-        #loginPage { display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .login-card { background: white; width: 100%; max-width: 550px; padding: 40px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .captcha-box { background: linear-gradient(45deg, #eee, #ccc); padding: 10px 20px; font-size: 24px; font-weight: bold; letter-spacing: 5px; border-radius: 4px; border: 1px solid #bbb; margin-right: 10px; font-style: italic; }
-        
-        /* ANA SAYFA STİLLERİ (GİRİŞTEN SONRA) */
-        #mainPage { display: none; }
-        .hero { background: #005596; color: white; padding: 20px 10%; }
-        .container { padding: 40px 10%; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 25px; border-radius: 10px; border: 1px solid #ddd; text-align: center; cursor: pointer; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); border-color: #ed1c24; }
-        
-        /* BİLGİ PENCERESİ */
-        .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 12px; box-shadow: 0 0 100px rgba(0,0,0,0.5); z-index: 1000; width: 400px; border-top: 6px solid #ed1c24; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 999; }
-    </style>
-</head>
-<body>
-
-<div id="loginPage">
-    <div class="login-card">
-        <h2 style="color:#ed1c24; margin-bottom:20px;">e-Devlet Kapısı Giriş</h2>
-        <p style="font-size:13px; margin-bottom:15px;">T.C. Kimlik Numaranız ve Şifreniz ile giriş yapın.</p>
-        <input type="text" placeholder="T.C. Kimlik No" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc;">
-        <input type="password" placeholder="e-Devlet Şifresi" style="width:100%; padding:12px; margin-bottom:15px; border:1px solid #ccc;">
-        
-        <div style="display:flex; align-items:center; margin-bottom:20px;">
-            <div id="captchaCode" class="captcha-box"></div>
-            <input type="text" id="userInput" placeholder="Kodu yazın" style="width:120px; padding:12px; border:1px solid #ccc;">
-        </div>
-        
-        <button onclick="checkLogin()" style="width:100%; background:#005596; color:white; padding:15px; border:none; border-radius:25px; font-weight:bold; cursor:pointer;">Giriş Yap</button>
-        <p style="text-align:center; font-size:11px; margin-top:20px; color:#888;">© 2025 Ankara - TÜRSAT Siber Güvenlik Başkanlığı</p>
-    </div>
-</div>
-
-<div id="mainPage">
-    <div class="hero">
-        <div style="display:flex; justify-content:space-between;">
-            <h1>türkiye.gov.tr</h1>
-            <div>Hoş Geldiniz, <strong>Elif Serbest</strong></div>
-        </div>
-    </div>
-    
-    <div style="text-align:center; padding:20px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Ataturk_1930s.jpg/220px-Ataturk_1930s.jpg" style="width:120px; border-radius:10px;">
-        <p><strong>Gazi Mustafa Kemal ATATÜRK</strong></p>
-    </div>
-
-    <div class="container">
-        <div class="card" onclick="showModal('profileModal')">👤<br>Profil Bilgilerim</div>
-        <div class="card" onclick="showModal('tapuModal')">🏠<br>Tapu Bilgileri (8 Kayıt)</div>
-        <div class="card" onclick="alert('Kayıtlı belge bulunamadı.')">🎓<br>Eğitim Bilgileri</div>
-    </div>
-</div>
-
-<div id="profileModal" class="modal">
-    <h3>Kimlik Bilgilerim</h3>
-    <p><strong>Doğum Tarihi:</strong> 28.11.2005</p>
-    <p><strong>Adres:</strong> İstanbul, Küçükçekmece, Sultan Murat Mah.</p>
-    <button onclick="closeModal('profileModal')" style="width:100%; background:#ed1c24; color:white; border:none; padding:10px; margin-top:15px; cursor:pointer;">Kapat</button>
-</div>
-
-<div id="tapuModal" class="modal">
-    <h3>Tapu Kayıtları</h3>
-    <p><strong>Bina:</strong> Serbest Apartmanı</p>
-    <p><strong>Konum:</strong> Vatan Sk. / Narlı Sk.</p>
-    <p style="color:green; font-weight:bold;">✅ Toplam 8 adet gayrimenkul kaydı listelendi.</p>
-    <button onclick="closeModal('tapuModal')" style="width:100%; background:#ed1c24; color:white; border:none; padding:10px; margin-top:15px; cursor:pointer;">Kapat</button>
-</div>
-
-<div id="overlay" class="overlay"></div>
-
-<script>
-    // Güvenlik kodu üretme
-    function genCaptcha() {
+    function makeCap() {
         let code = Math.random().toString(36).substring(2, 7);
-        document.getElementById("captchaCode").innerText = code;
+        document.getElementById("capCode").innerText = code;
     }
     
-    // Giriş Kontrolü
-    function checkLogin() {
-        const code = document.getElementById("captchaCode").innerText;
-        const input = document.getElementById("userInput").value;
+    function loginCheck() {
+        const code = document.getElementById("capCode").innerText;
+        const input = document.getElementById("capInput").value;
         if(input.toLowerCase() === code.toLowerCase()) {
-            document.getElementById("loginPage").style.display = "none";
-            document.getElementById("mainPage").style.display = "block";
+            alert("Sisteme Başarıyla Giriş Yapıldı. Merhaba Elif Serbest!\n\nDoğum Tarihi: 28.11.2005\nAdres: Sultan Murat Mah. Küçükçekmece\nTapu Kaydı: Serbest Apartmanı (8 Adet)");
+            window.location.href = "https://www.turkiye.gov.tr/tapu-bilgileri-sorgulama";
         } else {
-            alert("Güvenlik kodu yanlış!");
-            genCaptcha();
+            alert("Güvenlik kodu hatalı!");
+            makeCap();
         }
     }
-
-    function showModal(id) { document.getElementById(id).style.display='block'; document.getElementById('overlay').style.display='block'; }
-    function closeModal(id) { document.getElementById(id).style.display='none'; document.getElementById('overlay').style.display='none'; }
-    
-    window.onload = genCaptcha;
+    window.onload = makeCap;
 </script>
 
 </body>
