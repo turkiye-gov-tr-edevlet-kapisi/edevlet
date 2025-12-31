@@ -2,100 +2,78 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>e-Devlet Kapısı Kimlik Doğrulama Sistemi</title>
+    <title>türkiye.gov.tr | e-Devlet Kapısı</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background: #f2f2f2; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-        .login-card { background: white; width: 100%; max-width: 500px; padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 5px solid #ed1c24; }
+        body { background: #f2f2f2; min-height: 100vh; display: flex; justify-content: center; align-items: center; }
         
-        /* LOGO VE BAYRAK ALANI */
-        .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .logo-box { display: flex; align-items: center; gap: 10px; }
-        .logo-box img { height: 45px; }
-        .flag-box img { height: 35px; border-radius: 3px; }
+        /* GİRİŞ PANELİ */
+        #loginPanel { background: white; width: 450px; padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-top: 5px solid #ed1c24; }
+        .logo-row { display: flex; justify-content: space-between; margin-bottom: 20px; }
+        .input-box { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .cap-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+        .cap-code { background: #eee; padding: 10px; font-weight: bold; border: 1px dashed #999; font-style: italic; letter-spacing: 3px; }
+        .btn-go { width: 100%; background: #005596; color: white; padding: 15px; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; }
 
-        .official-link { text-align: center; margin-bottom: 20px; color: #005596; font-size: 14px; font-weight: bold; text-decoration: none; display: block; }
-        .official-link:hover { text-decoration: underline; }
-
-        .tabs { display: flex; border-bottom: 1px solid #ddd; margin-bottom: 25px; justify-content: space-around; font-size: 12px; color: #666; }
-        .tab.active { color: #000; border-bottom: 3px solid #ed1c24; padding-bottom: 8px; font-weight: bold; }
-
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 12px; color: #333; margin-bottom: 5px; font-weight: bold; }
-        .form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; background: #fdfdfd; font-size: 16px; outline: none; }
-        
-        .captcha-container { display: flex; align-items: center; gap: 10px; margin-top: 15px; }
-        .captcha-box { background: #e8e8e8; padding: 10px; font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; letter-spacing: 4px; color: #444; border: 1px dashed #999; width: 120px; text-align: center; user-select: none; }
-
-        .btn-submit { width: 100%; background: #005596; color: white; border: none; padding: 15px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; }
-        
-        footer { text-align: center; margin-top: 25px; font-size: 10px; color: #999; border-top: 1px solid #eee; padding-top: 15px; }
+        /* GİRİŞ SONRASI PORTAL */
+        #portalPanel { display: none; width: 90%; max-width: 800px; background: white; min-height: 500px; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .portal-header { background: #005596; color: white; padding: 20px; display: flex; justify-content: space-between; }
+        .portal-body { padding: 30px; display: flex; gap: 30px; }
+        .profile-img { width: 150px; border: 3px solid #eee; border-radius: 8px; }
     </style>
 </head>
 <body>
 
-<div class="login-card">
-    <div class="header-top">
-        <div class="logo-box">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Turkiye.gov.tr_logo.svg" alt="e-Devlet Logo">
+<div id="loginPanel">
+    <div class="logo-row">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Turkiye.gov.tr_logo.svg" height="40">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" height="30">
+    </div>
+    <p style="text-align:center; font-weight:bold; color:#005596; margin-bottom:20px;">www.turkiye.gov.tr</p>
+    <input type="text" class="input-box" placeholder="T.C. Kimlik No">
+    <input type="password" class="input-box" placeholder="e-Devlet Şifresi">
+    <div class="cap-row">
+        <div id="code" class="cap-code"></div>
+        <input type="text" id="ans" class="input-box" style="margin:0; width:120px;" placeholder="Kod">
+    </div>
+    <button class="btn-go" onclick="enter()">Giriş Yap</button>
+</div>
+
+<div id="portalPanel">
+    <div class="portal-header">
+        <h2>türkiye.gov.tr</h2>
+        <span>Hoş Geldin, <strong>Elif Serbest</strong></span>
+    </div>
+    <div class="portal-body">
+        <div style="text-align:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Ataturk_1930s.jpg/220px-Ataturk_1930s.jpg" class="profile-img">
+            <p style="margin-top:10px;"><strong>Gazi Mustafa Kemal ATATÜRK</strong></p>
         </div>
-        <div class="flag-box">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Türk Bayrağı">
+        <div style="flex:1;">
+            <h3 style="color:#ed1c24; border-bottom:1px solid #eee; padding-bottom:5px;">👤 Profil Bilgilerim</h3>
+            <p style="margin:10px 0;"><strong>Doğum Tarihi:</strong> 28.11.2005</p>
+            <p style="margin:10px 0;"><strong>Adres:</strong> Sultan Murat Mah. Küçükçekmece / İSTANBUL</p>
+            
+            <h3 style="color:#005596; border-bottom:1px solid #eee; padding-bottom:5px; margin-top:20px;">🏠 Tapu Kayıtlarım</h3>
+            <p style="margin:10px 0;"><strong>Bina:</strong> Serbest Apartmanı (8 Kayıt)</p>
+            <p style="margin:10px 0;"><strong>Sokak:</strong> Vatan Sk. / Narlı Sk.</p>
+            <p style="color:green; font-weight:bold; margin-top:10px;">✅ Tapu ve Kadastro Genel Müdürlüğü onaylıdır.</p>
         </div>
     </div>
-
-    <a href="https://www.turkiye.gov.tr" class="official-link">www.turkiye.gov.tr</a>
-
-    <div class="tabs">
-        <div class="tab active">e-Devlet Şifresi</div>
-        <div class="tab">Mobil İmza</div>
-        <div class="tab">T.C. Kimlik Kartı</div>
-    </div>
-
-    <div class="form-group">
-        <label>T.C. Kimlik No</label>
-        <input type="text" maxlength="11" placeholder="TC Kimlik Numaranız">
-    </div>
-
-    <div class="form-group">
-        <label>e-Devlet Şifresi</label>
-        <input type="password" placeholder="Şifreniz">
-    </div>
-
-    <div class="form-group">
-        <label>Güvenlik Kodu</label>
-        <div class="captcha-container">
-            <div id="capCode" class="captcha-box"></div>
-            <input type="text" id="capInput" style="flex:1" placeholder="Kodu girin">
-        </div>
-    </div>
-
-    <button class="btn-submit" onclick="loginCheck()">Giriş Yap</button>
-
-    <footer>
-        <p>Hızlı Çözüm Merkezi | Gizlilik ve Güvenlik</p>
-        <p>© 2025 Ankara - TÜRSAT Siber Güvenlik Başkanlığı<br>Tüm Hakları Saklıdır.</p>
-    </footer>
 </div>
 
 <script>
-    function makeCap() {
-        let code = Math.random().toString(36).substring(2, 7);
-        document.getElementById("capCode").innerText = code;
+    function load() { document.getElementById("code").innerText = Math.random().toString(36).substring(2, 7); }
+    function enter() {
+        const c = document.getElementById("code").innerText;
+        const i = document.getElementById("ans").value;
+        if(i.toLowerCase() === c.toLowerCase()) {
+            document.getElementById("loginPanel").style.display = "none";
+            document.getElementById("portalPanel").style.display = "block";
+            document.body.style.background = "#fff";
+        } else { alert("Kod hatalı!"); load(); }
     }
-    
-    function loginCheck() {
-        const code = document.getElementById("capCode").innerText;
-        const input = document.getElementById("capInput").value;
-        if(input.toLowerCase() === code.toLowerCase()) {
-            alert("Sisteme Başarıyla Giriş Yapıldı. Merhaba Elif Serbest!\n\nDoğum Tarihi: 28.11.2005\nAdres: Sultan Murat Mah. Küçükçekmece\nTapu Kaydı: Serbest Apartmanı (8 Adet)");
-            window.location.href = "https://www.turkiye.gov.tr/tapu-bilgileri-sorgulama";
-        } else {
-            alert("Güvenlik kodu hatalı!");
-            makeCap();
-        }
-    }
-    window.onload = makeCap;
+    window.onload = load;
 </script>
 
 </body>
